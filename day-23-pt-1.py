@@ -3,7 +3,6 @@ from pathlib import Path
 data = Path('/Users/benmelodics/Desktop/AdventOfCode/23/day-23-input-1.txt').read_text().splitlines()
 l = len(data)
 edges = (-1, l)
-#print(edges)
 
 def hike(data):
 
@@ -73,15 +72,12 @@ def hike(data):
 def hike_lengths(hike_data):
 
 	joined_paths = [[hike_data[0]['start']]]
-	#print(joined_paths)
 
 	for path in hike_data.keys():
-		#print(hike_data[path], '\n')
 		new_paths = []
 		for j in joined_paths:
 			if j[-1] == hike_data[path]['start']:
 				for c in hike_data[path]['connections']:
-					#print(c)
 					new_paths.append(j + [c])
 				if len(hike_data[path]['connections']) > 0:
 					joined_paths.remove(j)
@@ -91,7 +87,6 @@ def hike_lengths(hike_data):
 	path_lengths = []
 
 	for path in joined_paths:
-		#print(path, '\n')
 		path_length = 0
 		for node in path:
 			for k in hike_data.keys():
@@ -103,13 +98,5 @@ def hike_lengths(hike_data):
 
 	return(path_lengths)
 
-
-
 hike_data = hike(data)
-#hike_lengths(hike_data)
 print(hike_lengths(hike_data))
-
-
-
-
-
